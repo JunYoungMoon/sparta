@@ -20,6 +20,21 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Food> foodList = new ArrayList<>();
 
+    public void addFoodList(Food food) {
+        this.foodList.add(food);
+        food.setUser(this);
+    }
+
+///////////////영속성 전이 저장, 삭제 방식/////////////////
+
+//    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+//    private List<Food> foodList = new ArrayList<>();
+//
+//    public void addFoodList(Food food) {
+//        this.foodList.add(food);
+//        food.setUser(this);
+//    }
+
 ///////////////ManyToMany 중간 테이블(Order) 직접 생성 방식/////////////////
 
 //    //User를 통해서 Food를 조회할일이 없다면 아래의 코드는 굳이 필요가 없다.
