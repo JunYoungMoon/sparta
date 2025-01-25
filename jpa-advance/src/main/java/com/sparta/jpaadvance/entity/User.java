@@ -17,7 +17,10 @@ public class User {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "user")
+/////////////////////////고아 Entity 삭제///////////////////////////
+
+    //CascadeType.REMOVE와 orphanRemoval = true는 꼭 다른곳에 영향을 주는지 안주는지 고민을 한다음에 사용할것
+    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Food> foodList = new ArrayList<>();
 
     public void addFoodList(Food food) {
@@ -25,7 +28,7 @@ public class User {
         food.setUser(this);
     }
 
-///////////////영속성 전이 저장, 삭제 방식/////////////////
+/////////////////////////영속성 전이 저장, 삭제 방식///////////////////////
 
 //    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 //    private List<Food> foodList = new ArrayList<>();

@@ -94,6 +94,10 @@ public class CascadeTest {
     @Rollback(value = false)
     @DisplayName("영속성 전이 삭제")
     void test4() {
+        //연관관계 주인이 자식엔티티, 주인이 아닌곳이 부모 엔티티이다.
+        //User는 부모 엔티티다. 쉽게 mappedBy를 하는곳이 부모엔티티라고 생각하면 된다.
+        //Food는 자식 엔티티다. 연관관계 주인임으로 JoinColumn을 사용해서 FK가 있다.
+
         // 고객 Robbie 를 조회합니다.
         User user = userRepository.findByName("Robbie");
         System.out.println("user.getName() = " + user.getName());
@@ -104,6 +108,8 @@ public class CascadeTest {
         }
 
         // Robbie 탈퇴
+        // CascadeType.REMOVE 옵션으로 "★부모 엔티티 삭제★" 시 연관된 자식도 함께 삭제 한다.
+        // orphanRemoval = true 옵션과 헷갈리지 말것
         userRepository.delete(user);
     }
 }
