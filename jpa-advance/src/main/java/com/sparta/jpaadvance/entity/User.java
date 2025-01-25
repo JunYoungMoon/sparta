@@ -17,11 +17,14 @@ public class User {
     private Long id;
     private String name;
 
+    @OneToMany(mappedBy = "user")
+    private List<Food> foodList = new ArrayList<>();
+
 ///////////////ManyToMany 중간 테이블(Order) 직접 생성 방식/////////////////
 
-    //User를 통해서 Food를 조회할일이 없다면 아래의 코드는 굳이 필요가 없다.
-    @OneToMany(mappedBy = "user")
-    private List<Order> orderList = new ArrayList<>();
+//    //User를 통해서 Food를 조회할일이 없다면 아래의 코드는 굳이 필요가 없다.
+//    @OneToMany(mappedBy = "user")
+//    private List<Order> orderList = new ArrayList<>();
 
 ///////////////////ManyToMany 중간 테이블 자동 생성 방식////////////////////
 

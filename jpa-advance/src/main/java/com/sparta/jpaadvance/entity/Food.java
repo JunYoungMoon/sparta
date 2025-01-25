@@ -4,9 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 @Getter
 @Setter
@@ -18,11 +15,15 @@ public class Food {
     private String name;
     private double price;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
 ///////////////ManyToMany 중간 테이블(Order) 직접 생성 방식/////////////////
 
-    //Food를 통해서 User를 조회할일이 없다면 아래의 코드는 굳이 필요가 없다.
-    @OneToMany(mappedBy = "food")
-    private List<Order> orderList = new ArrayList<>();
+//    //Food를 통해서 User를 조회할일이 없다면 아래의 코드는 굳이 필요가 없다.
+//    @OneToMany(mappedBy = "food")
+//    private List<Order> orderList = new ArrayList<>();
 
 ///////////////////ManyToMany 중간 테이블 자동 생성 방식////////////////////
 

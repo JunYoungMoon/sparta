@@ -72,15 +72,15 @@ public class OrderTest {
         Food food = foodRepository.findById(1L).orElseThrow(NullPointerException::new);
 
         // User 객체를 사용하여 Food 정보 조회
-        List<Order> orderList1 = user.getOrderList();
-        for (Order order : orderList1) {
-            System.out.println("food.getName() = " + order.getFood().getName());
-        }
+//        List<Order> orderList1 = user.getOrderList();
+//        for (Order order : orderList1) {
+//            System.out.println("food.getName() = " + order.getFood().getName());
+//        }
 
         // Food 객체를 사용하여 User 정보 조회
-        List<Order> orderList2 = food.getOrderList();
-        for (Order order : orderList2) {
-            System.out.println("user.getName() = " + order.getUser().getName());
-        }
+//        List<Order> orderList2 = food.getOrderList();
+//        for (Order order : orderList2) {
+//            System.out.println("user.getName() = " + order.getUser().getName());
+//        }
     }
 }
