@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.context.MessageSource;
 
 import java.util.Optional;
 
@@ -30,6 +31,9 @@ class ProductServiceTest {
 
     @Mock
     ProductFolderRepository productFolderRepository;
+
+    @Mock
+    MessageSource messageSource;
 
     @Test
     @DisplayName("관심 상품 희망가 - 최저가 이상으로 변경")
@@ -51,8 +55,7 @@ class ProductServiceTest {
 
         Product product = new Product(requestProductDto, user);
 
-        ProductService productService = new ProductService(productRepository, productFolderRepository, folderRepository);
-
+        ProductService productService = new ProductService(productRepository, productFolderRepository, folderRepository, messageSource);
         given(productRepository.findById(productId)).willReturn(Optional.of(product));
 
         // when
@@ -72,7 +75,7 @@ class ProductServiceTest {
         ProductMyPriceRequestDto requestMyPriceDto = new ProductMyPriceRequestDto();
         requestMyPriceDto.setMyprice(myprice);
 
-        ProductService productService = new ProductService(productRepository, productFolderRepository, folderRepository);
+        ProductService productService = new ProductService(productRepository, productFolderRepository, folderRepository, messageSource);
 
         // when
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
