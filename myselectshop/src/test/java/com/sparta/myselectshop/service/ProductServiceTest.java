@@ -13,14 +13,23 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 
-@ExtendWith(MockitoExtension.class) // @Mock 사용을 위해 설정합니다.
+//@ExtendWith(MockitoExtension.class) // @Mock 사용을 위해 설정합니다.
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = {ProductServiceTest.TestConfig.class})
+//@Import(ProductServiceTest.TestConfig.class)
 class ProductServiceTest {
 
     @Mock
@@ -32,8 +41,22 @@ class ProductServiceTest {
     @Mock
     ProductFolderRepository productFolderRepository;
 
-    @Mock
-    MessageSource messageSource;
+//    @Mock
+//    private MessageSource messageSource;
+
+    @Autowired
+    private MessageSource messageSource;
+
+    @TestConfiguration
+    static class TestConfig {
+        @Bean
+        public MessageSource messageSource() {
+            ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+            messageSource.setBasename("messages"); // messages.properties 파일 로드
+            messageSource.setDefaultEncoding("UTF-8");
+            return messageSource;
+        }
+    }
 
     @Test
     @DisplayName("관심 상품 희망가 - 최저가 이상으로 변경")
@@ -84,7 +107,7 @@ class ProductServiceTest {
 
         // then
         assertEquals(
-                "유효하지 않은 관심 가격입니다. 최소 " +ProductService.MIN_MY_PRICE + "원 이상으로 설정해 주세요.",
+                "최저 희망가는 최소 " +ProductService.MIN_MY_PRICE + "원 이상으로 설정해 주세요.",
                 exception.getMessage()
         );
     }
