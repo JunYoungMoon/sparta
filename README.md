@@ -9,4 +9,10 @@
    - 더미 데이터 최초 실행시 한번만 동작 하도록 주석 해제 (경로 : /myselectshop/util/TestDataRunner.java)
    - kakao develop REST API 키 필요 (경로 : /resources/templates/login.html, /myselectshop/service/KakaoService.java) 
    - 심화주차 내용 추가 : 소셜 로그인, 테스트, AOP, Global Exception, Error 메시지 관리
-6. junit5-practice :간단한 테스트 방법 자세한건 5번에서 진행 **[심화 1주차]**
+6. junit5-practice : 간단한 테스트 방법 자세한건 5번에서 진행 **[심화 1주차]**
+7. multi-module : 루트 프로젝트에 여러개의 서브 모듈이 존재하도록 구성 **[개인 공부]**
+8. spring-cloud : 스프링 클라우드 환경 관련 패키지 **[MSA 1주차]**
+   - loadbalancer : 스프링 클라우드 로드 밸런싱
+   - circuitbreaker : 장애 발생 시 요청을 차단하여 서비스 과부하 방지(fallbackOrder 사용)
+   - apigateway : api 게이트웨이를 통해 서비스 라우팅
+   
