@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  service-a:
+    build:
+      context: ./a  # service-a의 Dockerfile 경로
+    ports:
+      - "18080:8080"
+    depends_on:
+      - service-b
+
+  service-b:
+    build:
+      context: ./b  # service-b의 Dockerfile 경로
+    ports:
+      - "18081:8080"
+
