@@ -25,3 +25,4 @@
    - sample : 기본적인 msa 환경 구축 및 default crud 추가
 9. jpashop : 엔티티 관계 설정방법
 10. project-manage : docker로 a,b 프로젝트 배포, gitlab으로 aws ecr,ecs 배포 **[프로젝트 관리 1,2주차]**
+11. [delievery-management](delievery-management) : 모놀리틱 주문 서비스 프로젝트 [첫번째 프로젝트]
