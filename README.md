@@ -16,11 +16,6 @@
    - circuitbreaker : 장애 발생 시 요청을 차단하여 서비스 과부하 방지(fallbackOrder 사용)
    - apigateway : api 게이트웨이를 통해 서비스 라우팅
    - auth : jwt 인증/인가 설정, 다이나믹 config 설정
-   
-     | oauth                                    | config                                                                                                                                                                 |
-     |------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-     | ![oauth](images/oauth.png)               | ![config](images/config.png)                                                                                                                                           |
-     | gateway : JWT 인가한다. <br>auth : JWT 인증한다. | product 서버는 application.yml파일에서 config 서버의 설정 정보를 가져와서 실행한다.<br/> 또한 config 서버의 config 설정이 변경될시 product 서버에서 컨트롤러에 @RefreshScope 애너테이션을 추가함으로 다이나믹 config 정보를 적용할수 있다. |
    - zipkin : 분산추적 설정 docker-compose.yml 실행 필요
    - sample : 기본적인 msa 환경 구축 및 default crud 추가
 9. [jpashop](jpashop) : 엔티티 관계 설정방법
