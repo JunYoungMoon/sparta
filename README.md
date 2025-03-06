@@ -21,5 +21,5 @@
 9. [jpashop](jpashop) : 엔티티 관계 설정방법
 10. [delievery-management](delievery-management) : 모놀리틱 주문 서비스 프로젝트 [첫번째 프로젝트]
 11. [project-manage](project-manage) : docker를 활용한 a,b 프로젝트 배포 및 gitlab을 사용한 aws ecr,ecs 배포 **[프로젝트 관리 1,2주차]**
-12. [redis](redis) : redis 인메모리 저장소 및 캐싱 전략  **[인메모리 저장소 및 캐싱 전략 1,2주차]**
+12. [redis](redis) : redis 명령어 활용,클러스터 세션 및 캐싱 전략 **[인메모리 저장소 및 캐싱 전략 1,2주차]**
 
