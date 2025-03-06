@@ -1,4 +1,4 @@
-## spring 기본기 레포지토리입니다.
+## spring 기본기 레포지토리
 
 1. [spring-prepare](spring-prepare) : 메모장 CRUD **[입문 1주차]**
 2. [spring-auth](spring-auth) : 스프링 시큐리티를 활용한 JWT 인증/인가 처리 **[숙련 1주차]**
@@ -20,5 +20,6 @@
    - sample : 기본적인 msa 환경 구축 및 default crud 추가
 9. [jpashop](jpashop) : 엔티티 관계 설정방법
 10. [delievery-management](delievery-management) : 모놀리틱 주문 서비스 프로젝트 [첫번째 프로젝트]
-11. [project-manage](project-manage) : docker로 a,b 프로젝트 배포, gitlab으로 aws ecr,ecs 배포 **[프로젝트 관리 1,2주차]**
+11. [project-manage](project-manage) : docker를 활용한 a,b 프로젝트 배포 및 gitlab을 사용한 aws ecr,ecs 배포 **[프로젝트 관리 1,2주차]**
+12. [redis](redis) : redis 인메모리 저장소 및 캐싱 전략  **[인메모리 저장소 및 캐싱 전략 1,2주차]**
 
