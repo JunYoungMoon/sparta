@@ -26,7 +26,7 @@
 ### SecurityContextHolder
 ![SecurityContextHolder.webp](images/SecurityContextHolder.webp)
 
-#### SecurityContextHolder
+#### SecurityContext
 
 - SecurityContext는 인증이 완료된 사용자의 상세 정보(Authentication)를 저장합니다.
 - SecurityContext는 SecurityContextHolder 로 접근할 수 있습니다.
