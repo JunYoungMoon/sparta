@@ -1,0 +1,3 @@
+[submodule "logistics-service/logistics-service/logistics-delivery-17"]
+	path = logistics-service/logistics-service/logistics-delivery-17
+	url = https://github.com/4-Year-Gap/logistics-delivery-msa.git
