@@ -23,4 +23,5 @@
 11. [project-manage](project-manage) : docker를 활용한 a,b 프로젝트 배포 및 gitlab을 사용한 aws ecr,ecs 배포 **[프로젝트 관리 1,2주차]**
 12. [redis](redis) : redis 명령어 활용,클러스터 세션 및 캐싱 전략 **[인메모리 저장소 및 캐싱 전략 1,2주차]**
 13. [stream-forge](stream-forge) : rabbitmq, kafka 기본설정 및 mq SAGA pattern 적용 **[대규모 스트림 처리 1주차]**
+14. [logistics-service](logistics-service) : 대규모 AI 시스템 프로젝트 17조,26조 **[두번째 프로젝트]**
 
