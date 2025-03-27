@@ -1,0 +1,66 @@
+### fromHub 생성
+POST {{baseUrl}}/api/v1/hubs
+Content-Type: application/json
+Authorization: {{access_token}}
+
+{
+  "hubName": "테스트 데이터",
+  "locationApi": {
+    "address": "테스트 주소",
+    "latitude": 37.514219,
+    "longitude": 127.112628
+  }
+}
+> {%
+  fromHubId = response.body.id;
+%}
+
+
+### toHub 생성
+POST {{baseUrl}}/api/v1/hubs
+Content-Type: application/json
+Authorization: {{access_token}}
+
+{
+  "hubName": "테스트 데이터",
+  "locationApi": {
+    "address": "테스트 주소",
+    "latitude": 37.514219,
+    "longitude": 127.112628
+  }
+}
+> {%
+  toHubId = response.body.id;
+%}
+
+
+###
+POST {{baseUrl}}/api/v1/app/hubRoutes
+Content-Type: application/json
+Authorization: {{access_token}}
+
+{
+  "fromHubId": "{{fromHubId}}",
+  "toHubId":  "{{toHubId}}"
+}
+
+###배송 경로를 알고리즘 계산해 200km 이하일 때 P2P로 from, to hub 제공
+
+### 200km 이상일 때 중간 경유지가 담긴 List 경로 반환 ex)1-2, 2-3
+###200km 이하 P2P
+POST http://localhost:19042/api/v1/app/hubRoutes/delivery
+Content-Type: application/json
+
+{
+  "fromHubId": "ccc994d9-82b8-4556-9533-94cd824646ec",
+  "toHubId": "7094ddcf-cc2c-4255-8e8d-43d2f2b74a18"
+}
+
+###200km 이상 HUB To HUB RELAY
+POST http://localhost:19042/api/v1/app/hubRoutes/delivery
+Content-Type: application/json
+
+{
+  "fromHubId": "8eb343e4-ddd8-478a-8dae-c561a4d72062",
+  "toHubId": "bd022638-f752-4bde-abd6-096441f68907"
+}
