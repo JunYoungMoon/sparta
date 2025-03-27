@@ -1,0 +1,75 @@
+spring:
+  application:
+    name: hub-service
+
+  datasource:
+    url: jdbc:mysql://${Mysql_host}:3306/hub
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${Mysql_name}
+    password: ${Mysql_password}
+
+  jpa:
+    properties:
+      hibernate:
+        show-sql: true
+        format-sql: true
+#        hbm2ddl:
+#          auto: update
+
+  kafka:
+    host: ${Kafka_host}
+    username: ${Kafka_name}
+    password: ${Kafka_password}
+
+  data:
+    redis:
+      host: ${Redis_host}
+      port: 6379
+      username: ${Redis_name}
+      password: ${Redis_password}
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+#management:
+#  zipkin:
+#    tracing:
+#      endpoint: "http://localhost:9411/api/v2/spans"
+#  tracing:
+#    sampling:
+#      probability: 1.0
+
+server:
+  port: 19091
+
+naver:
+  maps:
+    api:
+      directions5:
+        url: ${Naver_maps_directions5_api_url}
+      key:
+        id: ${Naver_maps_api_key_id}
+        value: ${Naver_maps_api_key_value}
+
+kakao:
+  maps:
+    api:
+      url: ${Kakao_maps_api_url}
+      key: ${Kakao_maps_api_key}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${Eureka_name}:${Eureka_password}@${Eureka_host}:19090/eureka/
+#  instance:
+#    hostname: ${My_host}
+#    securePortEnabled: true
+#    nonSecurePortEnabled: false
+#    securePort: 443
+#    statusPageUrl: https://${eureka.instance.hostname}/actuator/info
+#    healthCheckUrl: https://${eureka.instance.hostname}/actuator/health
+#    homePageUrl: https://${eureka.instance.hostname}/
+#    preferIpAddress: false
+#    secureVirtualHostName: ${spring.application.name}

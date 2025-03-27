@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: delivery-service
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://${Mysql_host}:3306/hub
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${Mysql_name}
+    password: ${Mysql_password}
+    hikari:
+      maximum-pool-size: 10
+  kafka:
+    bootstrap-servers: ${Kafka_host}:9092
+    user-name: ${Kafka_name}
+    password: ${Kafka_password}
+
+
+#management:
+#  zipkin:
+#    tracing:
+#      endpoint: "http://localhost:9411/api/v2/spans"
+#  tracing:
+#    sampling:
+#      probability: 1.0
+
+server:
+  port: 19097
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${Eureka_name}:${Eureka_password}@${Eureka_host}:19090/eureka/
+  instance:
+    hostname: ${My_host}
+    securePortEnabled: true
+    nonSecurePortEnabled: false
+    securePort: 443
+    statusPageUrl: https://${eureka.instance.hostname}/actuator/info
+    healthCheckUrl: https://${eureka.instance.hostname}/actuator/health
+    homePageUrl: https://${eureka.instance.hostname}/
+    preferIpAddress: false
+    secureVirtualHostName: ${spring.application.name}
+
+kafka:
+  event:
+    group: order_group
+    name:
+      order-create: order-topic
+      product_decrease: product_decrease
+
