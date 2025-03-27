@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: monitoring
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" # 모든 Actuator 엔드포인트를 노출
+
+  endpoint:
+    health:
+      show-details: always # 헬스 체크 엔드포인트에서 상세 정보 표시
+
+  server:
+    port: 19090 # Actuator 엔드포인트를 19090 포트에서 서비스

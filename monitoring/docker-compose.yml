@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    restart: unless-stopped
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./config/web.yml:/etc/prometheus/web.yml
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    entrypoint: ["/bin/prometheus", "--config.file=/etc/prometheus/prometheus.yml", "--web.config.file=/etc/prometheus/web.yml"]
+
+  grafana:
+    image: grafana/grafana:latest
+    restart: unless-stopped
+    container_name: grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=password
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana-data:/var/lib/grafana
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  loki:
+    image: grafana/loki:latest
+    restart: unless-stopped
+    container_name: loki
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./config/loki-config.yml:/mnt/config/loki-config.yml
+    command:
+      - -config.file=/mnt/config/loki-config.yml
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
